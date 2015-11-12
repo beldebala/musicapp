@@ -1,0 +1,9 @@
+{
+   "name": "MusicApp",
+   "description" : "Music App",
+   "version": "0.0.1",
+   "dependencies" : {
+       "express" : "4.x",
+       "connect" : "*"
+    }
+}
