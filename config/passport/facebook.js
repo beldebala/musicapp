@@ -14,15 +14,17 @@ module.exports = new fbStrategy({
 	callbackURL : config.fb.callbackURL
 },function(aceessToken,refreshToken,prof,dn){
 	var options = {
-		//need to check 
+		criteria : {'facebook.id' : profile.id}
 	};
 	User.load(options,function(error,user){
         if(error) return dn(error);
         if(!user){
         	user = new User({
-        		name : //fb api fill,
-        		email : //,
-        		facebook: //
+        		name : profile.displayName,//fb api fill,
+        		email : profile.emails[0].values,//,
+        		facebook: profile.username,//
+        		provider: 'facebook',
+        		facebook: profile._json
         	});
         	user.save(function(err){
         		if(err){
