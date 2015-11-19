@@ -9,5 +9,9 @@ var albumSchema = new Schema({
 	img_filename : {type: String, default: 'default_album.jpg'}
 });
 
+//validations
+albumSchema.path('title').required(true, 'Album title cannot be blank');
+//albumSchema.path('body').required(true, 'Album body cannot be blank');
+
 mongoose.model('Album', albumSchema);
 
