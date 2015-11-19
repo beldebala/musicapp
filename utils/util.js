@@ -4,3 +4,5 @@ function extend(src,dest){
 		dest[key] = src[key];
 	}
 }
+
+export.extend = extend;
