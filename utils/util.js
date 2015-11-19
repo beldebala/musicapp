@@ -5,4 +5,4 @@ function extend(src,dest){
 	}
 }
 
-export.extend = extend;
+exports.extend = extend;

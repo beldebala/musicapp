@@ -1,8 +1,8 @@
 //config for app
 var path = require("path");
 var extend = require("../utils/util").extend;
-var devEnv = require(".environment/dev");
-var prodEnv = require(".environment/prod");
+var devEnv = require("./environment/dev");
+var prodEnv = require("./environment/prod");
 //prod
 var defaults = {
 	root : path.join(__dirname,'..')
