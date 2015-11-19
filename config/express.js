@@ -21,9 +21,9 @@ var env = process.env.NODE_ENV || 'dev';
 
  //compression
 module.exports = function(app,passport){
- console.log("passport=======================",passport);
+ //console.log("passport=======================",passport);
  app.use(compression({
- 	threshold : 256
+ 	threshold : 512
  }));
  //static files
 app.use(express.static(config.root + "/public"));
@@ -46,20 +46,36 @@ if(env === "dev"){
 		cache : false
 	});
 }
+
+  app.engine('html', swig.renderFile);
+  app.set('views', config.root + '/app/views');
+  app.set('view engine', 'html');
+
  //package.json to views
 app.use(function(req,res,next){
 	res.locals.pkg = pkg;
 	res.locals.env = env;
 });
  //bodyparser
-app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({extended : true}));
-app.use(multer());
-//app.use(met)
+app.use(bodyParser.json());
+
+//app.use(multer());
+  app.use(methodOverride(function (req, res) {
+    if (req.body && typeof req.body === 'object' && '_method' in req.body) {
+      // look in urlencoded POST bodies and delete it
+      var method = req.body._method;
+      delete req.body._method;
+      return method;
+    }
+  }));
  //cookieparser
 app.use(cookieParser());
-app.use(sessionMan({secret : "fhgjhfgjhfgjhfg"}));
+app.use(sessionMan({secret : "secret"}));
 app.use(session({
+	secret: pkg.name,
+    proxy: true,
+    saveUninitialized: true,
 	resave : true,
 	store : new mongoConnect({
 		url : config.db,
@@ -74,7 +90,7 @@ app.use(flashConnect());
  //view-helpers
 app.use(viewHelpers(pkg.name));
  //csrf
- if(env === "prod"){
+ if(env === "prod" || env === "dev"){
  	app.use(csrf());
 
  	app.use(function(req,res,next){
