@@ -11,11 +11,12 @@ var fb = require('./passport/facebook');
 module.exports = function(passport){
 	//check this passport methods
 	passport.serializeUser(function(user,done){
-		//need to write
+		done(null,user.id);
 	});
 
 	passport.deserializeUser(function(id,done){
 		//need to write
+		User.load({criteria : {_id : id}},done);
 	});
 
 	passport.use(fb);
