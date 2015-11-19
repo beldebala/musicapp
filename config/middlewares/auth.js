@@ -13,5 +13,5 @@ exports.user = {
 			return res.redirect("/users/"+request.profile.id);
 		}
 		next();
-	};
+	}
 };

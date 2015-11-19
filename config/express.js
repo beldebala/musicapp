@@ -1,11 +1,13 @@
 var express = require("express"),
 	swig = require("swig"),
+	session = require("express-session"),
 	compression = require("compression"),
 	cookieParser = require("cookie-parser"),
 	bodyParser = require("body-parser"),
 	methodOverride = require("method-override"),
-	csrf = require("csrf"),
+	csrf = require("csurf"),
 	winLogger = require("winston"),
+	multer = require("multer"),
 	sessionMan = require("cookie-session");
 
 var mongoConnect = require("connect-mongo")(session);
@@ -18,7 +20,8 @@ var env = process.env.NODE_ENV || 'dev';
  
 
  //compression
-
+module.exports = function(app,passport){
+ console.log("passport=======================",passport);
  app.use(compression({
  	threshold : 256
  }));
@@ -64,10 +67,10 @@ app.use(session({
 	})
 }));
 // passport
-app.use(passport.intialize());
+app.use(passport.initialize());
 app.use(passport.session());
 //flash
-app.use(flash());
+app.use(flashConnect());
  //view-helpers
 app.use(viewHelpers(pkg.name));
  //csrf
@@ -79,6 +82,8 @@ app.use(viewHelpers(pkg.name));
  		next();
  	});
  }
+
+};
 
 
 

@@ -6,10 +6,10 @@ var mongoose = require("mongoose");
 var fbStrategy = require("passport-facebook").Strategy;
 var config = require('config');
 var User = mongoose.model("User");
-
+console.log("++++++++++++++=====>",config.fb);
 // Expose the passport-facebook
 module.exports = new fbStrategy({
-	clientId : config.fb.clientID,
+	clientID : config.fb.clientID,
 	clientSecret : config.fb.clientSecret,
 	callbackURL : config.fb.callbackURL
 },function(aceessToken,refreshToken,prof,dn){

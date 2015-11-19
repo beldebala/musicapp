@@ -3,13 +3,14 @@ var join = require('path').join;
 var express = require('express');
 var mongoose = require('mongoose');
 var passport = require('passport');
-var config = require('config');
+var config = require('./config/config');
 
 var app = express();
 var port = process.env.PORT || 3000;
 
 // Connect to mongodb
 var connect = function () {
+	console.log("config is",config);
   var options = { server: { socketOptions: { keepAlive: 1 } } };
   mongoose.connect(config.db, options);
 };
@@ -29,7 +30,7 @@ require('./config/passport')(passport);
 require('./config/express')(app, passport);
 
 // routes
-require('./config/routes')(app, passport);
+require('./config/routing')(app, passport);
 
 app.listen(port);
 console.log('Express app started on port ' + port);

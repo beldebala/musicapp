@@ -1,8 +1,8 @@
 //load the required controllers
-var users = require("../app/controller/users");
+var users = require("../app/controllers/users");
 
 //load the middleware
-var auth = require("./middleware/auth");
+var auth = require("./middlewares/auth");
 
 var songsAuth = [auth.requiresLogin,auth.songs.hasAuthorization];
 
