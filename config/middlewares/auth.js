@@ -15,3 +15,15 @@ exports.user = {
 		next();
 	}
 };
+
+exports.songs = {
+	hasAuthorization : function(request,response,next){
+		if(request.profile.id != request.user.id){
+			request.flash('info','You are not Authorized to view this section');
+			return res.redirect("/users/"+request.profile.id);
+		}
+		next();
+	}
+};
+
+

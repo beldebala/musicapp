@@ -9,10 +9,11 @@ var songsAuth = [auth.requiresLogin,auth.songs.hasAuthorization];
 
 module.exports = function(app,passport){
 	//route users
-	app.get("/login",users.login);
+
+	app.get("/signup",users.signup);
 	//rest of the routes
-	app.get("/songs",songs.index);
-	app.get("/songs/new",auth.requiresLogin,songs.new);
+	//app.get("/songs",songs.index);
+	//app.get("/songs/new",auth.requiresLogin,songs.new);
 
    //handle 404 and 500
 
