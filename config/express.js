@@ -66,7 +66,8 @@ app.use(session({
 // passport
 app.use(passport.intialize());
 app.use(passport.session());
-
+//flash
+app.use(flash());
  //view-helpers
 app.use(viewHelpers(pkg.name));
  //csrf
