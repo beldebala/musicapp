@@ -11,10 +11,27 @@ var commentsSchema = new Schema({
 });
 
 //validations
-tracksSchema.path('user_id').required(true, 'Need a User');
-tracksSchema.path('track_id').required(true, 'Need a Track.');
-tracksSchema.path('content').required(true, 'Need a comment content.');
-tracksSchema.path('timeline_position').required(true, 'Need a Time Line position.');
+commentsSchema.path('user_id').required(true, 'Need a User');
+commentsSchema.path('track_id').required(true, 'Need a Track.');
+commentsSchema.path('content').required(true, 'Need a comment content.');
+commentsSchema.path('timeline_position').required(true, 'Need a Time Line position.');
+
+//adding methods
+commentsSchema.methods = {
+	addTrack : function( user_id, track_id, content, timeline_position, cb ){
+		this.user_id = user_id;
+		this.track_id = track_id;
+		this.content = content;
+		this.timeline_position = timeline_position;
+		this.save(cb);
+	},
+	removeTrack : function(){
+		
+	},
+	updateTrack : function(){
+
+	}
+};
 
 mongoose.model('Comments', commentsSchema);
 
