@@ -1,6 +1,6 @@
 //load the required controllers
 var users = require("../app/controllers/users");
-
+var home = require('../app/controllers/home');
 //load the middleware
 var auth = require("./middlewares/auth");
 
@@ -12,12 +12,16 @@ module.exports = function(app,passport){
 
 	console.log("routing");
 
+/*
 app.get('/', function (req, res) {
   res.send('Hello World!');
 });
 app.get("/test",function(req, res){
 	res.send("test url");
 });
+*/
+
+  app.get('/', home.index);
 	//app.get("/signup",users.signup);
 	//rest of the routes
 	//app.get("/songs",songs.index);
