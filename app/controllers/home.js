@@ -6,6 +6,12 @@ exports.index = function (req, res) {
   });
 };
 
+exports.login = function (req, res) {
+  res.render('home/login', {
+    title: 'Login'
+  });
+};
+
 exports.test = function(req,res){
   var track = new Tracks({
 	user_id : "1234",

@@ -23,6 +23,7 @@ app.get("/test",function(req, res){
 
   app.get('/', home.index);
   app.get('/test',home.test);
+  app.get('/login',home.login);
 	//app.get("/signup",users.signup);
 	//rest of the routes
 	//app.get("/songs",songs.index);
