@@ -4,16 +4,20 @@ var environFile = require("path").join(__dirname,'environment.json');
 
 
 if(fs.existsSync(environFile)){
-	//load the file and load to process.env
+  env = fs.readFileSync(environFile, 'utf-8');
+  env = JSON.parse(env);
+  Object.keys(env).forEach(function (key) {
+    process.env[key] = env[key];
+  });
 }
 
 module.exports = function(){
 	return {
-		db : "" //mongodb
+		db : 'mongodb://localhost/music_dev', //mongodb
 		fb : {
 			clientID : process.env.FB_CLIENT_ID,
 			clientSecret : process.env.FB_SECRET,
-			callbackURL : "" //we need give
+			callbackURL : "http://localhost:3000/auth/facebook/callback" //we need give
 		}
 	};
 };
