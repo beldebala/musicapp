@@ -1,6 +1,7 @@
 {
   "FB_CLIENT_ID": "755098814594072",
   "FB_SECRET": "50995925c07dcce516e633cc0f145c32",
+  "NODE_PATH": "./config:./app/controllers",
   "TWITTER_CLIENTID": "ID",
   "TWITTER_SECRET": "SECRET",
   "GITHUB_CLIENTID": "ID",
