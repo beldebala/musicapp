@@ -5,7 +5,7 @@
 var mongoose = require("mongoose");
 var fbStrategy = require("passport-facebook").Strategy;
 console.log("Env data =====>",process.env);
-var config = require('config');
+var config = require('../config');
 var User = mongoose.model("User");
 console.log("++++++++++++++=====>",config.fb);
 // Expose the passport-facebook
