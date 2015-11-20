@@ -26,14 +26,11 @@ fs.readdirSync(join(__dirname, 'app/models')).forEach(function (file) {
 // passport config
 require('./config/passport')(passport);
 
-
 // routes
 require('./config/routing')(app, passport);
 
 //application settings
 require('./config/express')(app, passport);
-
-
 
 app.listen(port);
 console.log('Express app started on port ' + port);
