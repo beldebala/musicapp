@@ -14,7 +14,7 @@ var mongoConnect = require("connect-mongo")(session);
 var flashConnect = require("connect-flash"),
 	viewHelpers = require("view-helpers"),
 	pkg = require("../package.json"),
-	config = require("../config");
+	config = require("./config");
 
 var env = process.env.NODE_ENV || 'dev';
  
