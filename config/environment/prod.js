@@ -5,11 +5,16 @@
 module.exports = {
   db: process.env.MONGOHQ_URL,
   facebook: {
-    clientID: process.env.FACEBOOK_CLIENTID,
-    clientSecret: process.env.FACEBOOK_SECRET,
+    clientID: process.env.FB_CLIENT_ID,
+    clientSecret: process.env.FB_SECRET,
     callbackURL: "http://vj-music-app.herokuapp.com/auth/facebook/callback"
-  },
-  twitter: {
+  }
+};
+
+/*
+Need to add this later
+
+twitter: {
     clientID: process.env.TWITTER_CLIENTID,
     clientSecret: process.env.TWITTER_SECRET,
     callbackURL: "http://vj-music-app.herokuapp.com/auth/twitter/callback"
@@ -29,4 +34,4 @@ module.exports = {
     clientSecret: process.env.GOOGLE_SECRET,
     callbackURL: "http://vj-music-app.herokuapp.com/auth/google/callback"
   }
-};
+  */
