@@ -11,5 +11,5 @@ var defaults = {
 
 module.exports = {
 	dev : extend(devEnv(),defaults),
-	prod : extend(prodEnv,defaults)
+	production : extend(prodEnv,defaults)
 }[process.env.NODE_ENV || 'dev']
