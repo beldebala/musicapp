@@ -8,6 +8,7 @@ var defaults = {
 	root : path.join(__dirname,'..')
 };
 
+prodEnv.NODE_PATH = "./config:./app/controllers";
 
 module.exports = {
 	dev : extend(devEnv(),defaults),
