@@ -13,7 +13,7 @@ if(fs.existsSync(environFile)){
 
 module.exports = function(){
 	return {
-		db : 'mongodb://localhost/music_dev', //mongodb
+		db : 'mongodb://root:kismath@ds057204.mongolab.com:57204/mapp', //mongodb
 		fb : {
 			clientID : process.env.FB_CLIENT_ID,
 			clientSecret : process.env.FB_SECRET,
