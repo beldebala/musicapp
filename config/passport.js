@@ -23,4 +23,9 @@ module.exports = function(passport){
 
 //add otther providers usage here
 
+
+//local Strategy 
+
+
+
 };

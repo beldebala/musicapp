@@ -12,23 +12,21 @@ module.exports = function(app,passport){
 
 	console.log("routing");
 
-/*
-app.get('/', function (req, res) {
-  res.send('Hello World!');
-});
-app.get("/test",function(req, res){
-	res.send("test url");
-});
-*/
 
   app.get('/', home.index);
   app.get('/test',home.test);
   app.get('/login',home.login);
-	//app.get("/signup",users.signup);
-	//rest of the routes
-	//app.get("/songs",songs.index);
-	//app.get("/songs/new",auth.requiresLogin,songs.new);
+  app.post('/track',home.test);
+	
+  app.get('/auth/facebook',
+  passport.authenticate('facebook' , {scope : 'email' , sucessFlash : 'Welcome!'}  ));
 
-   //handle 404 and 500
+app.get('/auth/facebook/callback',
+  passport.authenticate('facebook', { failureRedirect: '/login'}),
+  function(req, res) {
+    // Successful authentication, redirect home.
+    res.redirect('/login');
+  });
+
 
 };

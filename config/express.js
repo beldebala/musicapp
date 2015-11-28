@@ -47,14 +47,18 @@ if(env === "dev"){
 	});
 }
 
+
   app.engine('html', swig.renderFile);
   app.set('views', config.root + '/app/views');
   app.set('view engine', 'html');
+
+  
 
  //package.json to views
 app.use(function(req,res,next){
 	res.locals.pkg = pkg;
 	res.locals.env = env;
+	next();
 });
  //bodyparser
 app.use(bodyParser.urlencoded({extended : true}));
@@ -69,6 +73,7 @@ app.use(bodyParser.json());
       return method;
     }
   }));
+
  //cookieparser
 app.use(cookieParser());
 app.use(sessionMan({secret : "secret"}));
@@ -82,6 +87,8 @@ app.use(session({
 		collection : 'sessions'
 	})
 }));
+
+
 // passport
 app.use(passport.initialize());
 app.use(passport.session());
@@ -94,12 +101,21 @@ app.use(viewHelpers(pkg.name));
  	app.use(csrf());
 
  	app.use(function(req,res,next){
+
  		res.locals.csrf_token = req.csrfToken();
  		next();
- 	});
+ 	}); 
  }
 
+app.use(function(err, req, res, next) {
+  console.error(err.stack);
+  res.status(500).send('Something broke!');
+});
+
+
 };
+
+
 
 
 

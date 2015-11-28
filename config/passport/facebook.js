@@ -12,14 +12,16 @@ console.log("++++++++++++++=====>",config.fb);
 module.exports = new fbStrategy({
 	clientID : config.fb.clientID,
 	clientSecret : config.fb.clientSecret,
-	callbackURL : config.fb.callbackURL
-},function(aceessToken,refreshToken,prof,dn){
+	callbackURL : config.fb.callbackURL ,
+        profileFields: ['id','photos', 'emails']
+},function(aceessToken,refreshToken,profile,dn){
 	var options = {
 		criteria : {'facebook.id' : profile.id}
 	};
 	User.load(options,function(error,user){
         if(error) return dn(error);
         if(!user){
+                console.log("user not found");
         	user = new User({
         		name : profile.displayName,//fb api fill,
         		email : profile.emails[0].values,//,
@@ -27,6 +29,7 @@ module.exports = new fbStrategy({
         		provider: 'facebook',
         		facebook: profile._json
         	});
+
         	user.save(function(err){
         		if(err){
         			console.log(err);
@@ -35,6 +38,7 @@ module.exports = new fbStrategy({
         	});
         }
         else{
+                console.log("user found");
         	return dn(error,user);
         }
 	});

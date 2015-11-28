@@ -20,5 +20,19 @@ console.log("hello world");
 albumSchema.path('title').required(true, 'Album title cannot be blank');
 //albumSchema.path('body').required(true, 'Album body cannot be blank');
 
+
+
+
+
+albumSchema.methods = {
+
+  'addTracks' : function(trackobj){
+
+      this.tracks.push(trackobj);
+
+  }
+
+}
+
 mongoose.model('Album', albumSchema);
 
