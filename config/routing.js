@@ -28,5 +28,5 @@ app.get('/auth/facebook/callback',
     res.redirect('/login');
   });
 
-
+  app.get('/signup', home.signup);
 };

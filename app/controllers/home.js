@@ -13,6 +13,13 @@ exports.login = function (req, res) {
   });
 };
 
+exports.signup = function (req, res) {
+  res.render('home/login', {
+    title: 'Login'
+  });
+};
+
+
 exports.test = function(req,res){
  
 
