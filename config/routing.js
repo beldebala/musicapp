@@ -29,4 +29,9 @@ app.get('/auth/facebook/callback',
   });
 
   app.get('/signup', home.signup);
+
+  app.post('/signup', passport.authenticate('local',{
+    successRedirect: '/',
+    failureRedirect: '/login'
+  }));
 };

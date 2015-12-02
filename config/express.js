@@ -95,6 +95,13 @@ app.use(passport.session());
 //flash
 app.use(flashConnect());
  //view-helpers
+
+ app.use(csrf({ value : function(req){
+
+      return (req.body && req.body.cross_site_request_forgery_value);
+
+
+ 	}}));
 app.use(viewHelpers(pkg.name));
  //csrf
  if(env === "prod" || env === "dev"){
