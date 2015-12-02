@@ -7,7 +7,7 @@ module.exports = {
   fb: {
     clientID: process.env.FB_CLIENT_ID,
     clientSecret: process.env.FB_SECRET,
-    callbackURL: "http://gaanapp.herokuapp.com/auth/facebook/callback"
+    callbackURL: "http://vj-music-app-dev.herokuapp.com/auth/facebook/callback"
   }
 };
 
