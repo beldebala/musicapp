@@ -1,0 +1,29 @@
+body {
+  padding-top: 50px;
+}
+.main-content {
+  padding: 40px 15px;
+}
+
+div.album{
+	float: left;
+	margin: 5px;
+	width: 12%;
+	padding-bottom: 6%;
+}
+
+.content{
+   display: flex;
+   flex-direction : column;
+
+
+}
+
+img{
+
+	width: 100%;
+}
+
+div.album:hover img{
+    opacity:0.5;
+}
