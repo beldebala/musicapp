@@ -3,7 +3,7 @@
    "description" : "Music App",
    "version": "0.0.2",
    "scripts": {
-    "start": "NODE_PATH=./config:./app/controllers NODE_ENV=dev ./node_modules/.bin/nodemon app.js",
+    "start": "./node_modules/.bin/nodemon app.js NODE_PATH=./config:./app/controllers NODE_ENV=dev ",
     "test": "NODE_PATH=./config:./app/controllers NODE_ENV=test ./node_modules/.bin/mocha --reporter spec --timeout 10000 tests/test-*.js"
    },
    "dependencies": {
